@@ -8,7 +8,7 @@
 
 [colors]
 ;background = ${xrdb:color0:#222}
-background = #80000000
+background = #000000
 background-alt = #444
 ;foreground = ${xrdb:color7:#222}
 foreground = #dfdfdf
@@ -18,9 +18,9 @@ secondary = #ffffff
 alert = #ff1900
 
 [bar/bar]
-;monitor = ${env:MONITOR:HDMI-0}
+monitor = ${env:MONITOR:LVDS1}
 width = 100%
-height = 20
+height = 13
 ;offset-x = 1%
 ;offset-y = 1%
 radius = 0
@@ -30,25 +30,25 @@ bottom=true
 background = ${colors.background}
 foreground = ${colors.foreground}
 
-line-size = 3
+line-size = 1
 line-color = #f00
 
 border-size = 0
 border-color = #00000000
 
-padding-left = 0
-padding-right = 2
+padding-left = 1
+padding-right = 0
 
-module-margin-left = 1
-module-margin-right = 2
+module-margin-left = 1 
+module-margin-right = 0
 
-font-0 = Roboto:pixelsize=9;1
+font-0 = Scientifica:pixelsize=9;1
 font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
 font-2 = siji:pixelsize=10;1
 
 modules-left = i3 spotify
 modules-center = 
-modules-right = pulseaudio xkeyboard memory cpu wlan eth temperature battery date powermenu
+modules-right = pulseaudio wlan eth temperature battery date powermenu
 
 tray-position = right
 tray-padding = 2 
@@ -56,15 +56,15 @@ tray-transparent = false
 ;tray-background = #0063ff
 
 ;wm-restack = bspwm
-;wm-restack = i3
+wm-restack = i3
 
 ;override-redirect = true
 
 ;scroll-up = bspwm-desknext
 ;scroll-down = bspwm-deskprev
 
-;scroll-up = i3wm-wsnext
-;scroll-down = i3wm-wsprev
+scroll-up = i3wm-wsnext
+scroll-down = i3wm-wsprev
 
 cursor-click = pointer
 cursor-scroll = ns-resize
@@ -234,7 +234,7 @@ ramp-signal-foreground = ${colors.foreground-alt}
 
 [module/eth]
 type = internal/network
-interface = eno1
+interface = enp0s25
 interval = 3.0
 
 format-connected-underline = #ffffff
@@ -248,17 +248,17 @@ format-disconnected =
 
 [module/date]
 type = internal/date
-interval = 5
+interval = 1
 
 date =
-date-alt = " %Y-%m-%d"
+date-alt = "%Y-%m-%d"
 
-time = %I:%M %p
-time-alt = %H:%M:%S
+time =%I:%M %p
+time-alt =%H:%M:%S
 
 format-underline = ffffff
 
-label = %date% %time%
+label =%date% %time%
 
 [module/pulseaudio]
 type = internal/pulseaudio
