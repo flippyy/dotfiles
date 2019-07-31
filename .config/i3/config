@@ -18,12 +18,20 @@ exec --no-startup-id $term --name=dropdown
 for_window [instance="dropdown"] floating enable , resize set 800 350 , move scratchpad , border pixel 3
 bindsym $mod+u [instance="dropdown"] scratchpad show , [instance="dropdown"] move position center
 
+# mpd/ncmpcpp
+exec --no-startup-id mpd
+exec --no-startup-id $term --name=ncmpcpp --title=ncmpcpp --exec=ncmpcpp 
+for_window [instance="ncmpcpp"] floating enable , resize set 600 400 , move scratchpad , border pixel 3
+bindsym $mod+n [instance="ncmpcpp"] scratchpad show , [instance="ncmpcpp"] move position center
+# , move right 300px , move up 300px
+
 # start some stuff
 exec --no-startup-id nm-applet
-exec --no-startup-id compton
- 
+exec --no-startup-id compton --blur-background --blur-kern "3x3box" --blur-method "kawase" --blur-strength 4 --config /home/jerwin/.config/compton/compton.conf
+
+#exec --no-startup-id accountable2you 
 # Set Wallpaper
-exec --no-startup-id feh --bg-scale ~/media/pictures/wallpapers/hazytrees.jpg
+exec --no-startup-id feh --bg-scale ~/media/pictures/wallpapers/reflectiverocks.jpg
 
 # Take a screenshot
 bindsym $mod+Shift+S exec scrot -e 'mv $f ~/media/pictures/screenshots'
@@ -123,8 +131,8 @@ bindsym $mod+Shift+0 move container to workspace $ws10
 
 # window borders and gaps
 for_window [class="^.*"] border pixel 2
-gaps inner 0 
-gaps outer 0
+#gaps inner 8 
+#gaps outer 8
 
 # Colorscheme
 # class                 border  bground text    indicator child_border
@@ -137,9 +145,9 @@ client.background       000000
 
 # --EXTRA BINDS-- 
 # Pulse Audio controls
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume  alsa_output.pci-0000_00_1b.0.analog-stereo +2% #increase sound volume
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume  alsa_output.pci-0000_00_1b.0.analog-stereo -2% #decrease sound volume
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute alsa_output.pci-0000_00_1b.0.analog-stereo toggle #mute audio
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume  alsa_output.pci-0000_00_1f.3.analog-stereo +2% #increase sound volume
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume  alsa_output.pci-0000_00_1f.3.analog-stereo -2% #decrease sound volume
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute alsa_output.pci-0000_00_1f.3.analog-stereo toggle #mute audio
 # Media player controls
 bindsym XF86AudioPlay exec playerctl play-pause
 bindsym XF86AudioNext exec playerctl next
