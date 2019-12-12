@@ -11,31 +11,31 @@
 
 # variables for things
 set $mod Mod4
-set $term termite 
+set $term st 
+set $home /home/jerwin
 
 # dropdown terminal 
-exec --no-startup-id $term --name=dropdown
-for_window [instance="dropdown"] floating enable , resize set 800 350 , move scratchpad , border pixel 3
+exec --no-startup-id $term -n dropdown
+for_window [instance="dropdown"] floating enable , resize set 800 350 , move scratchpad , border pixel 6
 bindsym $mod+u [instance="dropdown"] scratchpad show , [instance="dropdown"] move position center
 
 # mpd/ncmpcpp
 exec --no-startup-id mpd
-exec --no-startup-id $term --name=ncmpcpp --title=ncmpcpp --exec=ncmpcpp 
+exec --no-startup-id $term -n ncmpcpp -t ncmpcpp -e $home/.scripts/ncmpcpp
 for_window [instance="ncmpcpp"] floating enable , resize set 600 400 , move scratchpad , border pixel 3
 bindsym $mod+n [instance="ncmpcpp"] scratchpad show , [instance="ncmpcpp"] move position center
-# , move right 300px , move up 300px
 
 # start some stuff
 exec --no-startup-id nm-applet
-exec --no-startup-id compton --blur-background --blur-kern "3x3box" --blur-method "kawase" --blur-strength 4 --config /home/jerwin/.config/compton/compton.conf
-
+exec --no-startup-id picom 
+exec --no-startup-id dbus-launch
 #exec --no-startup-id accountable2you 
 # Set Wallpaper
-exec --no-startup-id feh --bg-scale ~/media/pictures/wallpapers/reflectiverocks.jpg
+exec --no-startup-id feh --bg-scale ~/media/pictures/wallpapers/wallpapersnqq/Favorites/stairs.jpg
 
 # Take a screenshot
-bindsym $mod+Shift+S exec scrot -e 'mv $f ~/media/pictures/screenshots'
-
+bindsym $mod+Shift+S exec --no-startup-id scrot -e 'mv $f ~/media/pictures/screenshots'
+bindsym $mod+s exec --no-startup-id ~/.scripts/screenshot
 # Font for window titles`
 font pango:Source Code Pro 10
 
@@ -53,7 +53,10 @@ bindsym XF86Launch1 exec $term -e neomutt
 bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
-bindsym $mod+d exec j4-dmenu-desktop
+bindsym $mod+d exec j4-dmenu-desktop --dmenu="dmenu -fn Terminus -nb black -nf white -sb \#353536 -i"
+
+# X gamma
+exec --no-startup-id xgamma -rgamma .8 -ggamma .8 -bgamma .8
 
 
 #--WINDOW CONTROLS--
@@ -80,7 +83,8 @@ bindsym $mod+v split v
 bindsym $mod+f fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
-bindsym $mod+s layout stacking
+# I don't use stacking layout. 
+# bindsym $mod+s layout stacking
 bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
 
@@ -130,18 +134,18 @@ bindsym $mod+Shift+9 move container to workspace $ws9
 bindsym $mod+Shift+0 move container to workspace $ws10
 
 # window borders and gaps
-for_window [class="^.*"] border pixel 2
-#gaps inner 8 
-#gaps outer 8
+for_window [class="^.*"] border pixel 1
+gaps inner 20 
+gaps outer 0
 
 # Colorscheme
 # class                 border  bground text    indicator child_border
-client.focused          #FFFFFF #FFFFFF #FFFFFF #FFFFFF   #FFFFFF
+client.focused          #FFFFFF #000000 #FFFFFF #FFFFFF   #FFFFFF
 client.focused_inactive #000000 #000000 #FFFFFF #000000   #000000
 client.unfocused        #000000 #000000 #FFFFFF #000000   #000000
 client.urgent           #FF0000 #FF0000 #FFFFFF #FF0000   #FF0000
 client.placeholder      #000000 #000000 #FFFFFF #000000   #000000
-client.background       000000
+client.background       #000000
 
 # --EXTRA BINDS-- 
 # Pulse Audio controls
