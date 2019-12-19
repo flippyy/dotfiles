@@ -8,7 +8,7 @@
 
 [colors]
 ;background = ${xrdb:color0:#222}
-background = #000000
+background = #CC000000
 background-alt = #444
 ;foreground = ${xrdb:color7:#222}
 foreground = #dfdfdf
@@ -18,14 +18,14 @@ secondary = #ffffff
 alert = #ff1900
 
 [bar/bar]
-monitor = ${env:MONITOR:LVDS1}
+monitor = ${env:MONITOR:DVI-D-0}
 width = 100%
-height = 13
+height = 15
 ;offset-x = 1%
 ;offset-y = 1%
 radius = 0
 fixed-center = false
-bottom=true
+bottom=false
 
 background = ${colors.background}
 foreground = ${colors.foreground}
@@ -42,12 +42,12 @@ padding-right = 0
 module-margin-left = 1 
 module-margin-right = 0
 
-font-0 = Scientifica:pixelsize=9;1
+font-0 = Curie:pixelsize=15;1
 font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
 font-2 = siji:pixelsize=10;1
 
-modules-left = i3 spotify
-modules-center = 
+modules-left = i3
+modules-center = xwindow 
 modules-right = pulseaudio wlan eth temperature battery date powermenu
 
 tray-position = right
@@ -78,7 +78,7 @@ format-underline = #1db954
 
 [module/xwindow]
 type = internal/xwindow
-label = %title:0:30:...%
+label = %title:0:100:...%
 
 [module/xkeyboard]
 type = internal/xkeyboard
@@ -270,6 +270,7 @@ label-volume-foreground = ${root.foreground}
 label-muted = muted
 label-muted-foreground = #666
 
+format-volume-underline = ffffff
 ;[module/alsa]
 ;type = internal/alsa
 
