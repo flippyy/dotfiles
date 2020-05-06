@@ -2,9 +2,11 @@ set nu
 set nocompatible
 filetype plugin on
 set autoindent
+set cursorline
 syntax on
 set laststatus=2
 set t_Co=256
+set tabstop=4
 highlight LineNr ctermfg=white
 highlight link htmlTagName htmlTag
 hi Normal guibg=NONE ctermbg=NONE
