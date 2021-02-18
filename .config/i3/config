@@ -31,9 +31,10 @@ bindsym $mod+y [instance="mpsyt"] scratchpad show
 exec --no-startup-id nm-applet
 exec --no-startup-id picom 
 exec --no-startup-id dbus-launch
+exec --no-startup-id hydroxide serve
 #exec --no-startup-id accountable2you 
 # Set Wallpaper
-exec --no-startup-id feh --bg-scale ~/media/pictures/wallpapers/blackfoam.jpg
+exec --no-startup-id feh --bg-scale ~/media/pictures/wallpapers/flowergrove.jpg
 
 # Take a screenshot
 bindsym $mod+Shift+S exec --no-startup-id scrot -e 'mv $f ~/media/pictures/screenshots'
